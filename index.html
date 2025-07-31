@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Допомога від ООН | VOBU</title>
+    <title>Допомога від ООН | Головна</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-blue: #0061ff;
@@ -45,20 +46,32 @@
             100% { background-position: 0% 50%; }
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
+        /* Header */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
+        .header-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .header-icon:hover {
+            transform: scale(1.1);
+            color: var(--dark-blue);
         }
 
         .logo {
-            height: 240px;
+            height: 120px;
             margin-bottom: 1rem;
         }
 
@@ -79,94 +92,80 @@
             margin: 0 auto;
         }
 
-        /* Стилі для вибору статусу */
-        .status-section {
-            margin-bottom: 2rem;
-        }
-
-        .status-title {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .status-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            list-style: none;
-        }
-
-        .status-item {
-            display: flex;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: rgba(0, 97, 255, 0.05);
-            border-radius: 12px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .status-item:hover {
-            transform: translateY(-3px);
-            background: rgba(0, 97, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(0, 97, 255, 0.1);
-        }
-
-        .status-item.selected {
-            background: rgba(0, 97, 255, 0.1);
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.2);
-        }
-
-        .status-icon {
-            margin-right: 1rem;
-            color: var(--green);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .status-text {
-            font-weight: 500;
-        }
-
-        /* Карточка формы */
-        .form-card {
+        /* Navigation */
+        .nav-container {
             background: white;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 97, 255, 0.1);
+            border-radius: 0 0 15px 15px;
             margin-bottom: 2rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 90;
         }
 
-        .form-card::before {
+        nav {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-list {
+            display: inline-flex;
+            list-style: none;
+            gap: 1.5rem;
+            padding-bottom: 5px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 8px;
+            height: 3px;
             background: var(--gradient-blue);
+            border-radius: 3px;
         }
 
-        .form-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 97, 255, 0.2);
+        /* Main container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
         }
 
-        .form-section {
+        /* Pages */
+        .page {
             display: none;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .form-section.active {
+        .page.active {
             display: block;
-            animation: fadeIn 0.6s ease-out;
         }
 
         @keyframes fadeIn {
@@ -174,153 +173,92 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .form-title {
-            font-size: 1.8rem;
-            font-weight: 600;
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--primary-blue);
-            margin-bottom: 2rem;
-            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
         }
 
-        /* Поля формы */
-        .form-group {
-            margin-bottom: 1.8rem;
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-blue);
+            border-radius: 2px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: #444;
-            font-size: 1rem;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            border: 2px solid #e0e9ff;
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: #f8fbff;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            background-color: white;
-            box-shadow: 0 0 0 4px rgba(0, 97, 255, 0.1);
-        }
-
-        /* Специальное поле для номера карты */
-        .card-number-input {
-            position: relative;
-        }
-
-        .card-number-input .form-control {
-            padding-left: 3.5rem;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16"><path fill="%230061ff" d="M21 0H3C1.3 0 0 1.3 0 3v10c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm0 13c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V5h18v8zm0-10H3V3c0-.6.4-1 1-1h16c.6 0 1 .4 1 1v1z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: 1rem center;
-            background-size: 24px;
-            letter-spacing: 1px;
-            font-family: 'Courier New', monospace;
-            font-weight: 600;
-        }
-
-        .card-number-input .form-control::placeholder {
-            color: #a0b4d0;
-            font-weight: normal;
-            letter-spacing: normal;
-        }
-
-        /* Загрузка файлов */
-        .file-upload-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .file-upload-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .file-upload {
-            border: 2px dashed #c2ddff;
+        /* Cards */
+        .card {
+            background: white;
             border-radius: 15px;
+            box-shadow: var(--card-shadow);
             padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            background-color: #f8fbff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .file-upload:hover {
-            border-color: var(--primary-blue);
-            background-color: rgba(0, 97, 255, 0.03);
-            transform: translateY(-3px);
-        }
-
-        .file-upload input {
-            display: none;
-        }
-
-        .file-upload-icon {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             transition: var(--transition);
         }
 
-        .file-upload-label {
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 97, 255, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .file-upload-desc {
-            color: #777;
-            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .file-name {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 0.5rem;
-            word-break: break-all;
+        /* Lists */
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
         }
 
-        .file-preview {
-            width: 100%;
-            max-height: 150px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-top: 1rem;
-            display: none;
+        .feature-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
         }
 
-        /* Кнопки */
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            color: var(--green);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* Buttons */
         .btn {
             display: inline-block;
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             border-radius: 12px;
             font-weight: 600;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
             border: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            text-decoration: none;
         }
 
         .btn-primary {
@@ -334,73 +272,22 @@
             box-shadow: 0 8px 25px rgba(0, 97, 255, 0.4);
         }
 
-        .btn-secondary {
-            background: white;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 97, 255, 0.05);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            justify-content: center;
-        }
-
-        /* Экран загрузки */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .btn-block {
+            display: block;
             width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
+            margin: 1rem 0;
         }
 
-        .loading-screen.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(0, 97, 255, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary-blue);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 2rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            font-size: 1.2rem;
-            color: var(--primary-blue);
-            font-weight: 500;
-            margin-top: 1rem;
-        }
-
-        /* Выбор банка */
+        /* Bank selection */
         .bank-selection {
+            margin-top: 2rem;
+        }
+
+        .bank-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
         .bank-card {
@@ -413,18 +300,14 @@
             border: 2px solid #e0e9ff;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
         }
 
         .bank-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 97, 255, 0.1);
             border-color: var(--primary-blue);
-        }
-
-        .bank-card.selected {
-            border-color: var(--primary-blue);
-            background-color: #f0f7ff;
-            box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.2);
         }
 
         .bank-logo {
@@ -440,178 +323,356 @@
             margin-top: 0.5rem;
         }
 
-        /* Успешное завершение */
-        .success-screen {
+        /* Footer */
+        footer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2rem;
             text-align: center;
-            padding: 3rem 0;
+            margin-top: 3rem;
         }
 
-        .success-icon {
-            font-size: 5rem;
-            color: var(--green);
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             margin-bottom: 1.5rem;
-            animation: bounce 1s ease;
+            flex-wrap: wrap;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .success-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--green);
-            margin-bottom: 1rem;
-            background: var(--gradient-green);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .footer-link:hover {
+            text-decoration: underline;
         }
 
-        .success-message {
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 500px;
-            margin: 0 auto 2rem;
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        /* Адаптивность */
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 1.5rem;
-            }
-
-            .form-card {
-                padding: 2rem 1.5rem;
+                padding: 0 1.5rem 1.5rem;
             }
 
             h1 {
                 font-size: 2rem;
             }
 
-            .btn-group {
-                flex-direction: column;
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .header-icon {
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .bank-list {
+                grid-template-columns: 1fr;
             }
 
             .btn {
-                width: 100%;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-list {
+                gap: 1rem;
             }
 
-            .status-list {
-                grid-template-columns: 1fr;
+            .logo {
+                height: 80px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <a href="#" class="header-icon" id="infoIcon">
+            <i class="fas fa-info-circle"></i>
+        </a>
+        <img src="logo.png" alt="Логотип ООН" class="logo">
+        <h1>Гуманітарна допомога від ООН</h1>
+        <p class="subtitle">Програма фінансової підтримки для постраждалих від війни</p>
+    </header>
+
+    <div class="nav-container">
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#home" class="nav-link active">Головна</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Про нас</a></li>
+                <li class="nav-item"><a href="#payment" class="nav-link">Виплати</a></li>
+                <li class="nav-item"><a href="#eligibility" class="nav-link">Умови</a></li>
+                <li class="nav-item"><a href="#help" class="nav-link">Отримати допомогу</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="container">
-        <header>
-            <img src="logo.png" alt="Логотип VOBU" class="logo">
-            <h1>Верифікація за допомогою банка</h1>
-            <p class="subtitle">Оберіть ваш банк для подальшої обробки</p>
-        </header>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <h2 class="page-title">Ласкаво просимо</h2>
+            <div class="card">
+                <p class="page-content">
+                    Програма гуманітарної допомоги від Організації Об'єднаних Націй спрямована на підтримку 
+                    населення України, яке постраждало внаслідок військових дій. Ми надаємо фінансову допомогу 
+                    для забезпечення основних потреб та відновлення життя.
+                </p>
+                <a href="#help" class="btn btn-primary">Отримати допомогу</a>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Швидкі посилання</h3>
+                <div class="feature-list">
+                    <a href="#about" class="feature-item" style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-info-circle feature-icon"></i>
+                        <span>Дізнатися більше про програму</span>
+                    </a>
+                    <a href="#eligibility" class="feature-item" style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span>Перевірити, чи ви маєте право на допомогу</span>
+                    </a>
+                    <a href="#payment" class="feature-item" style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-money-bill-wave feature-icon"></i>
+                        <span>Дізнатися про розмір виплат</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <!-- Форма выбора банка -->
-        <div class="form-card">
-            <div id="bank-section" class="form-section active">
-                <h2 class="form-title">Оберіть ваш банк</h2>
+        <!-- About Page -->
+        <div id="about" class="page">
+            <h2 class="page-title">Про програму</h2>
+            <div class="card">
+                <p class="page-content">
+                    Організація Об'єднаних Націй (ООН) - це міжнародна організація, створена для підтримки 
+                    миру, безпеки та розвитку співпраці між країнами. Наша гуманітарна місія в Україні 
+                    спрямована на допомогу людям, які постраждали від конфлікту.
+                </p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span>Понад 1 мільйон отримали допомогу</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span>Працюємо в Україні з 2014 року</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span>Міжнародна підтримка та фінансування</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Наші цілі</h3>
+                <p class="page-content">
+                    Ми прагнемо забезпечити базові потреби постраждалих від війни, допомогти у відновленні 
+                    життя та створити умови для стабільного майбутнього.
+                </p>
+            </div>
+        </div>
 
+        <!-- Payment Page -->
+        <div id="payment" class="page">
+            <h2 class="page-title">Інформація про виплати</h2>
+            <div class="card">
+                <h3 class="card-title">Розмір допомоги</h3>
+                <p class="page-content">
+                    Розмір одноразової гуманітарної виплати становить <strong>3,000 гривень</strong> на одну особу. 
+                    Для сімей з дітьми передбачені додаткові виплати у розмірі <strong>1,500 гривень</strong> на кожну дитину.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Терміни виплат</h3>
+                <p class="page-content">
+                    Кошти надходять на рахунок протягом 3-5 робочих днів після схвалення заявки. 
+                    У разі великої кількості заявок термін може бути збільшений до 7 робочих днів.
+                </p>
+            </div>
+        </div>
+
+        <!-- Eligibility Page -->
+        <div id="eligibility" class="page">
+            <h2 class="page-title">Умови отримання допомоги</h2>
+            <div class="card">
+                <p class="page-content">
+                    Право на отримання гуманітарної допомоги мають:
+                </p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="fas fa-user feature-icon"></i>
+                        <span>Внутрішньо переміщені особи (ВПО)</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-home feature-icon"></i>
+                        <span>Мешканці зон активних бойових дій</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-child feature-icon"></i>
+                        <span>Багатодітні сім'ї</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-wheelchair feature-icon"></i>
+                        <span>Особи з інвалідністю</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-umbrella feature-icon"></i>
+                        <span>Одинокі пенсіонери</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Необхідні документи</h3>
+                <p class="page-content">
+                    Для отримання допомоги вам знадобиться підтвердити свій статус одним з таких документів:
+                </p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="fas fa-file-alt feature-icon"></i>
+                        <span>Паспорт або ID-картка</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-file-alt feature-icon"></i>
+                        <span>Довідка ВПО (якщо є)</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-file-alt feature-icon"></i>
+                        <span>Документи на дітей (для сімей)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Help Page -->
+        <div id="help" class="page">
+            <h2 class="page-title">Отримати допомогу</h2>
+            <div class="card">
+                <h3 class="card-title">Оберіть ваш банк</h3>
+                <p class="page-content">
+                    Для отримання допомоги оберіть банк, в якому у вас є картка. Ви будете перенаправлені 
+                    на офіційний сайт банку для подальшого оформлення.
+                </p>
+                
                 <div class="bank-selection">
-                    <div class="bank-card" data-bank="privatbank" data-url="http://dopomogaoon.cfd/privat/CKqenEXNVd">
-                        <img src="privat.png" alt="ПриватБанк" class="bank-logo">
-                        <div class="bank-name">ПриватБанк</div>
+                    <div class="bank-list">
+                        <!-- Замініть посилання на свої -->
+                        <a href="https://privatbank.ua" class="bank-card" id="privatbank">
+                            <img src="privat.png" alt="ПриватБанк" class="bank-logo">
+                            <div class="bank-name">ПриватБанк</div>
+                        </a>
+                        <a href="https://www.monobank.ua" class="bank-card" id="monobank">
+                            <img src="mono.png" alt="Монобанк" class="bank-logo">
+                            <div class="bank-name">Монобанк</div>
+                        </a>
+                        <a href="https://www.oschadbank.ua" class="bank-card" id="oschadbank">
+                            <img src="oshad.png" alt="Ощадбанк" class="bank-logo">
+                            <div class="bank-name">Ощадбанк</div>
+                        </a>
                     </div>
-
-                    <div class="bank-card" data-bank="monobank" data-url="https://www.monobank.ua">
-                        <img src="mono.png" alt="Монобанк" class="bank-logo">
-                        <div class="bank-name">Монобанк</div>
-                    </div>
-
-                    <div class="bank-card" data-bank="oschadbank" data-url="https://www.oschadbank.ua">
-                        <img src="oshad.png" alt="Ощадбанк" class="bank-logo">
-                        <div class="bank-name">Ощадбанк</div>
-                    </div>
-
-                <div class="form-group card-number-input">
-                    <label for="cardNumber">Номер вашої картки:</label>
-                    <input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000" required>
                 </div>
-
-                <div class="btn-group">
-                    <button id="submitBtn" class="btn btn-primary">Перейти до банку</button>
-                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Інструкція</h3>
+                <ol class="feature-list">
+                    <li class="feature-item">
+                        <i class="fas fa-1 feature-icon"></i>
+                        <span>Оберіть свій банк зі списку вище</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-2 feature-icon"></i>
+                        <span>Авторизуйтесь у своєму банківському додатку</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-3 feature-icon"></i>
+                        <span>Заповніть заявку на отримання допомоги</span>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-4 feature-icon"></i>
+                        <span>Очікуйте зарахування коштів</span>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>
 
-    <!-- Экран загрузки -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
-        <div class="loading-text">Перенаправлення до банку...</div>
-    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Політика конфіденційності</a>
+            <a href="#" class="footer-link">Умови використання</a>
+            <a href="#" class="footer-link">Контакти</a>
+        </div>
+        <p class="copyright">© 2023 Організація Об'єднаних Націй. Всі права захищені.</p>
+    </footer>
 
     <script>
-        // DOM элементы
-        const bankSection = document.getElementById('bank-section');
-        const submitBtn = document.getElementById('submitBtn');
-        const loadingScreen = document.getElementById('loadingScreen');
-        const formCard = document.querySelector('.form-card');
-        const cardNumberInput = document.getElementById('cardNumber');
-
-        // Выбор банка
-        const bankCards = document.querySelectorAll('.bank-card');
-        let selectedBank = null;
-        let selectedBankUrl = null;
-
-        // Обработчики событий для банков
-        bankCards.forEach(card => {
-            card.addEventListener('click', function() {
-                bankCards.forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedBank = this.getAttribute('data-bank');
-                selectedBankUrl = this.getAttribute('data-url');
+        // Навігація між сторінками
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Оновити активне посилання в навігації
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Приховати всі сторінки
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Показати вибрану сторінку
+                document.querySelector(targetId).classList.add('active');
+                
+                // Плавний скрол до верху сторінки
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
 
-        // Отправка формы
-        submitBtn.addEventListener('click', async function() {
-            if (!selectedBank || !cardNumberInput.value) {
-                alert('Будь ласка, оберіть ваш банк та введіть номер картки');
-                return;
-            }
-
-            // Показываем экран загрузки
-            loadingScreen.classList.add('active');
-
-            // Имитируем загрузку (1 секунда) и перенаправляем
-            setTimeout(() => {
-                // Здесь можно добавить отправку данных на сервер
-                console.log('Отправленные данные:', {
-                    bank: selectedBank,
-                    cardNumber: cardNumberInput.value
-                });
-
-                // Перенаправление на сайт банка
-                window.location.href = selectedBankUrl;
-            }, 1000);
+        // Інформаційна іконка
+        document.getElementById('infoIcon').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Це офіційний сайт програми гуманітарної допомоги ООН в Україні. Будьте обережні з фейковими сайтами!');
         });
 
-        // Форматирование номера карты
-        cardNumberInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-            let formatted = '';
-
-            for (let i = 0; i < value.length; i++) {
-                if (i > 0 && i % 4 === 0) {
-                    formatted += ' ';
-                }
-                formatted += value[i];
-            }
-
-            e.target.value = formatted.substring(0, 19);
-        });
+        // Ви можете змінити посилання на банки так:
+        // document.getElementById('privatbank').href = 'ВАШЕ_ПОСИЛАННЯ_ДЛЯ_ПРИВАТБАНК';
+        // document.getElementById('monobank').href = 'ВАШЕ_ПОСИЛАННЯ_ДЛЯ_МОНОБАНК';
+        // document.getElementById('oschadbank').href = 'ВАШЕ_ПОСИЛАННЯ_ДЛЯ_ОЩАДБАНК';
     </script>
 </body>
 </html>
